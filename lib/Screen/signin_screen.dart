@@ -1,4 +1,5 @@
 import 'package:firebase/Screen/HomeScreen.dart';
+import 'package:firebase/Screen/forgotpassword.dart';
 import 'package:firebase/Widgets/uihelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,13 @@ class _SignInState extends State<SignIn> {
             SignIn(emailcontroller.text.toString(), passwordcontroller.text.toString());
           }, child: Text("Sign Up", style:TextStyle(color: Colors.white),),
             style: ButtonStyle(backgroundColor:MaterialStatePropertyAll<Color>(Colors.blue),
-            ),)
+            ),),
+          SizedBox(height: 10,),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPassword()));
+          }, child: Text("Forgot Password", style:TextStyle(color: Colors.white),),
+            style: ButtonStyle(backgroundColor:MaterialStatePropertyAll<Color>(Colors.blue),
+            ),),
         ],
       ),
     );
