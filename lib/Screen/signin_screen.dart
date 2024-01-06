@@ -17,10 +17,10 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     TextEditingController emailcontroller = TextEditingController();
     TextEditingController passwordcontroller = TextEditingController();
-
+    dynamic msg = "Enter Email and Password";
     SignIn(String email,String password)async{
       if(email=="" && password==""){
-        return log("Enter Required Field's");
+         msg("Enter Required Field's");
       }
       else{
         UserCredential? userCredential;

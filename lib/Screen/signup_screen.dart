@@ -14,10 +14,10 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-
+  dynamic msg = "Enter Email and Password";
   SignUp(String email,String password)async{
     if(email=="" && password==""){
-      return log("Enter Required Field");
+       msg("Enter Required Field");
     }
     else{
       UserCredential? userCredential;
