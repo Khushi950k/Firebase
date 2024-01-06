@@ -2,7 +2,6 @@ import 'package:firebase/Screen/signin_screen.dart';
 import 'package:firebase/Widgets/uihelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -17,17 +16,17 @@ class _SignUpState extends State<SignUp> {
   dynamic msg = "Enter Email and Password";
   SignUp(String email,String password)async{
     if(email=="" && password==""){
-       msg("Enter Required Field");
+       msg("Enter Required Field's");
     }
     else{
       UserCredential? userCredential;
       try{
         userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value){
-          log("User Created");
+          msg("User Created");
         });
       }
       on FirebaseAuthException catch(ex){
-        log(ex.code.toString());
+        msg(ex.code.toString());
       }
 
     }
