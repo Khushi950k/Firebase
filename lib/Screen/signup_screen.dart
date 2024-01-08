@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase/Screen/signin_screen.dart';
 import 'package:firebase/Widgets/uihelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,20 +16,25 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-  dynamic msg = "Enter Email and Password";
   SignUp(String email,String password)async{
     if(email=="" && password==""){
-       msg("Enter Required Field's");
+      return log("Enter Required Field's");
     }
     else{
       UserCredential? userCredential;
       try{
         userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value){
-          msg("User Created");
+          log("User Created");
+        }).then((value){
+          FirebaseFirestore.instance.collection("Users").doc(email).set({
+            "Email":email
+          });
+        }).then((value){
+          log("Data Instered");
         });
       }
       on FirebaseAuthException catch(ex){
-        msg(ex.code.toString());
+        log(ex.code.toString());
       }
 
     }
