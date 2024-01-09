@@ -1,5 +1,7 @@
 import 'package:firebase/Screen/adddata.dart';
 import 'package:firebase/Screen/checkuser.dart';
+import 'package:firebase/Screen/fetchdata.dart';
+import 'package:firebase/Screen/profileupload.dart';
 import 'package:firebase/Screen/signup_screen.dart';
 import 'package:firebase/Screen/verfiy_user.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignUp()
+      home: AddImages()
     );
   }
 }
